@@ -1,4 +1,4 @@
-package com.acsenstiontaxcampanytaxcalculators;
+package com.ascension.tax.companion.atc.app;
 
 import com.facebook.react.ReactActivity;
 

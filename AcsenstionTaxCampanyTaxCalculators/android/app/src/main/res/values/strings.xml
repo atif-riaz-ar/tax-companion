@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">AcsenstionTaxCampanyTaxCalculators</string>
+    <string name="app_name">Acsenstion Tax Campany</string>
+    <string name="facebook_app_id">368111910956141</string>
+    <string name="fb_login_protocol_scheme">fb368111910956141</string>
 </resources>

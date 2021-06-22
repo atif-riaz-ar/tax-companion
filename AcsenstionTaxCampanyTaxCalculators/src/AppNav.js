@@ -20,7 +20,7 @@ import Payment from '../screens/content/Payment';
 const Nav = createDrawerNavigator();
 
 const AppNav = ({}) => {
-	
+
 	const CustomDrawerBefore = props => {
 		var current_tab = props.state.history.length < 2 ? 'News' : props.state.history[props.state.history.length -2].key.split('-')[0];
 		return (
@@ -55,8 +55,8 @@ const AppNav = ({}) => {
 			</View>
 		);
 	};
-	
-	
+
+
 	const {logout} = useContext(AuthContext);
 	const getMyIcon = (navigation, icon) => {
 		return {
@@ -66,7 +66,7 @@ const AppNav = ({}) => {
 			},
 		};
 	};
-	
+
 	return (
 		<Nav.Navigator
 			initialRouteName="News"
@@ -119,10 +119,10 @@ const AppNav = ({}) => {
 			<Nav.Screen name="Payment" component={Payment} options={({navigation}) => {
 				return getMyIcon(navigation, 'live_webinar');
 			}}/>
-			<Nav.Screen name="Company Income Tax" component={IncomeTaxCalculator} options={({navigation}) => {
+			<Nav.Screen name="Company Income Tax" component={ListingStack} options={({navigation}) => {
 				return getMyIcon(navigation, 'live_webinar');
 			}}/>
-			<Nav.Screen name="Value Added Tax" component={VatCalculator} options={({navigation}) => {
+			<Nav.Screen name="Value Added Tax" component={ListingStack} options={({navigation}) => {
 				return getMyIcon(navigation, 'live_webinar');
 			}}/>
 			<Nav.Screen name="Ask an Expert" component={ListingStack} options={({navigation}) => {

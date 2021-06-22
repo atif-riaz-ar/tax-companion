@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ScrollView, Text, StyleSheet, View } from "react-native";
 import * as COLOR from "../../styles/constants";
 import { Html5Entities } from "html-entities";
@@ -9,7 +9,6 @@ const htmlDecode = (text) => {
 	const ent = new Html5Entities();
 	return ent.decode(JSON.parse(text));
 };
-
 const NewsContent = ({ route }) => {
 	const [loading, setLoading] = useState(true);
 	return (

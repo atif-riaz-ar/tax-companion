@@ -118,6 +118,7 @@ const Login = ({ navigation }) => {
 			await GoogleSignin.hasPlayServices();
 			const userInfo = await GoogleSignin.signIn();
 			let result = userInfo.user;
+			console.log(userInfo)
 
 			let data = new FormData();
 			data.append('email', result.email);
@@ -140,7 +141,7 @@ const Login = ({ navigation }) => {
 	};
 
 	GoogleSignin.configure({
-		webClientId: '621680553614-kcfd0k448ks3e9ekhhh6i1qj2sr9jro6.apps.googleusercontent.com',
+		webClientId: '1060001755009-m6esti7c4re3hude0hr6cpri8b3p6go6.apps.googleusercontent.com',
 		offlineAccess: true
 	});
 

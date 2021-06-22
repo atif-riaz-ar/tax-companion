@@ -27,12 +27,14 @@ const Content = ({ route}) => {
 	if(current_date > subs_date) {
 		is_paid = route.params.item.is_paid;
 	}
-	
+
 	if(is_paid == 0) {
 		const content = route.params.item.content;
 		const type = route.params.item.data_type;
 		const [loading, setLoading] = useState(true);
-		
+		const [exist, setExist] = useState(true);
+
+		// console.log(content)
 		if (type === 'PDF') {
 			const resources = {
 				url: content
@@ -41,6 +43,7 @@ const Content = ({ route}) => {
 			return (
 				<View style={{ flex: 1 }}>
 					<Loader loading={loading}/>
+					{exist == true?
 					<PDFView
 						fadeInDuration={250.0}
 						style={{flex: 1}}
@@ -48,9 +51,18 @@ const Content = ({ route}) => {
 						resourceType={resourceType}
 						onLoad={() => setLoading(false)}
 						onError={(error) => {
-							//console.log('Cannot render PDF', error);
-						}}
+							setLoading(false)
+							setExist(false)
+						}
+						}
 					/>
+						: null}
+					{exist == false?
+						<View style={{flex:1, justifyContent: 'center'}}>
+						<Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>File not exist</Text>
+						</View>
+						: null
+					}
 				</View>
 			);
 		}
@@ -70,7 +82,7 @@ const Content = ({ route}) => {
 				</View>
 			);
 		};
-		
+
 		return (
 			<View style={styles.container}>
 				<Loader loading={loading}/>

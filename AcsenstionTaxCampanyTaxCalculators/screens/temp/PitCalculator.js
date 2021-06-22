@@ -15,7 +15,7 @@ const PitCalculator = ({route}) => {
 	let dd = user.subscription_date;
 	let t = dd.split(/[- :]/);
 	let subs_date = new Date(Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], t[5]));
-	
+
 	if(current_date > subs_date) {
 		navigation.navigate("Payment", {
 			nav: navigation,
@@ -33,7 +33,7 @@ const PitCalculator = ({route}) => {
 			</View>
 		)
 	}
-	
+
 	let [month, setMonth] = useState('1');
 	let [year, setYear] = useState('12');
 	let [basic, setBasic] = useState(0);
@@ -48,7 +48,7 @@ const PitCalculator = ({route}) => {
 	let [accommodation, setAccommodation] = useState(0);
 	let [car, setCar] = useState(0);
 	let [allowance, setAllowance] = useState(0);
-	
+
 	let getMonthly = (value) => {
 		return parseFloat((parseFloat(value) / parseInt(year)) * parseInt(month) ).toFixed(2);
 	};
@@ -56,19 +56,19 @@ const PitCalculator = ({route}) => {
 	let convertedValue = (value) => {
 		return parseFloat(value);
 	};
-	
+
 	let convertedYear = (value) => {
 		return value == '' ? 12 : parseInt(value);
 	};
-	
+
 	let convertedMonth = (value) => {
 		return value == '' ? 1 : parseInt(value);
 	};
-	
+
 	let n = (value) => {
 		return (value * month) / year;
 	};
-	
+
 	let GrossAnnualIncome = convertedValue(basic) + convertedValue(housing) + convertedValue(transport) + convertedValue(utility) + convertedValue(lunch) + convertedValue(entertainment) + convertedValue(bonus) + convertedValue(leave) + convertedValue(phone) + convertedValue(accommodation) + convertedValue(car) + convertedValue(allowance);
 	let GrossMonthlyIncome = getMonthly(GrossAnnualIncome);
 	let ConsolidatedAnnual = ((GrossAnnualIncome * 0.01) > (200000 / year * month) ? (GrossAnnualIncome * 0.01) : (200000 / year) * month) + (GrossAnnualIncome * 0.2);
@@ -133,8 +133,8 @@ const PitCalculator = ({route}) => {
 					<TextInput style={styles.input2} onChangeText={year => setYear(convertedYear(year))} value={year} keyboardType='numeric'/>
 					<TextInput style={styles.input2} onChangeText={month => setMonth(convertedMonth(month))} value={month} keyboardType='numeric'/>
 				</View>
-				
-				<Text style={styles.heading}>Value Added Tax Computation</Text>
+
+				<Text style={styles.heading}>PIT Computation</Text>
 				<View style={styles.grid}>
 					<Text style={styles.sub_label}> Description</Text>
 					<Text style={styles.input_label}>Annual</Text>
@@ -214,16 +214,16 @@ const PitCalculator = ({route}) => {
 							   value={allowance} keyboardType='numeric'/>
 					<Text style={styles.sub_result}>{getMonthly(allowance)}</Text>
 				</View>
-				
+
 				<Text style={styles.heading}> </Text>
 				<View style={styles.grid}>
 					<Text style={styles.result_col1}>Gross Income</Text>
 					<Text style={styles.result_col2} >{parseFloat(GrossAnnualIncome).toFixed(2)}</Text>
 					<Text style={styles.result_col2} >{parseFloat(GrossMonthlyIncome).toFixed(2)}</Text>
 				</View>
-				
+
 				<Text style={styles.heading}> </Text>
-				
+
 				<View style={styles.grid}>
 					<Text style={styles.result_col1}>Less Reliefs:</Text>
 				</View>
@@ -247,23 +247,23 @@ const PitCalculator = ({route}) => {
 					<Text style={styles.result_col2} >{parseFloat(TotalReliefAnnual).toFixed(2)}</Text>
 					<Text style={styles.result_col2} >{parseFloat(TotalReliefMonthly).toFixed(2)}</Text>
 				</View>
-				
+
 				<Text style={styles.heading}> </Text>
-				
+
 				<View style={styles.grid}>
 					<Text style={styles.result_col1}>Income Tax</Text>
 					<Text style={styles.result_col2} >{parseFloat(IncomeTax).toFixed(2)}</Text>
 					<Text style={styles.result_col2} >{parseFloat(getMonthly(IncomeTax)).toFixed(2)}</Text>
 				</View>
-				
+
 				<Text style={styles.heading}> </Text>
-				
+
 				<View style={styles.grid}>
 					<Text style={styles.sub_label}>Paye Tax Table:</Text>
 					<Text style={styles.input_label}> </Text>
 					<Text style={styles.input_label}> </Text>
 				</View>
-				
+
 				<View style={styles.grid2}>
 					<Text style={styles.result_col11}>First N300,000 @ 7%</Text>
 					<Text style={styles.result_col21} >{parseFloat(C07).toFixed(2)}</Text>
@@ -296,7 +296,7 @@ const PitCalculator = ({route}) => {
 				</View>
 
 				<Text style={styles.heading}> </Text>
-				
+
 				<View style={styles.grid2}>
 					<Text style={styles.result_col1}>Total Paye Tax</Text>
 					<Text style={styles.result_col21} >{parseFloat(TPT).toFixed(2)}</Text>

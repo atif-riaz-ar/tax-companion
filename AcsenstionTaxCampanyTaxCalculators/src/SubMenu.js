@@ -10,12 +10,12 @@ const SubMenu = (props) => {
 		CatSelected = true;
 	}
 	const [layoutHeight, setLayoutHeight] = useState(0);
-	
+
 	const updateLayout = () => {
 		layoutHeight == 0 ? setLayoutHeight(null) : setLayoutHeight(0);
 		LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 	};
-	
+
 	return (
 		<View style={{marginBottom: 10}}>
 			<TouchableOpacity onPress={updateLayout} style={{
@@ -79,7 +79,7 @@ const SubMenu = (props) => {
 						fontSize: 12,
 						paddingVertical: 10,
 						color: CurrentNav == 'Value Added Tax' ? COLOR.white : COLOR.primary_color,
-						}}>PIT Calculator</Text>
+						}}>VAT Calculator</Text>
 				</TouchableOpacity>
 			</View>
 		</View>
